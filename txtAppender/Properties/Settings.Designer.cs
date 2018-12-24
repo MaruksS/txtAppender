@@ -26,12 +26,12 @@ namespace txtAppender.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string directory {
+        public string directory1 {
             get {
-                return ((string)(this["directory"]));
+                return ((string)(this["directory1"]));
             }
             set {
-                this["directory"] = value;
+                this["directory1"] = value;
             }
         }
         
@@ -92,6 +92,18 @@ namespace txtAppender.Properties {
             }
             set {
                 this["filename2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string directory2 {
+            get {
+                return ((string)(this["directory2"]));
+            }
+            set {
+                this["directory2"] = value;
             }
         }
     }

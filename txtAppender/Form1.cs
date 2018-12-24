@@ -13,7 +13,8 @@ namespace txtAppender
         /*
          * On launch prepare default settings
          */ 
-        string directory = Properties.Settings.Default.directory;
+        string directory1 = Properties.Settings.Default.directory1;
+        string directory2 = Properties.Settings.Default.directory2;
         string file1 = Properties.Settings.Default.file1;
         string file2 = Properties.Settings.Default.file2;
         string outputPath = Properties.Settings.Default.outputFile;
@@ -50,7 +51,7 @@ namespace txtAppender
         private void watchDirectory1()
         {
             watcher = new FileSystemWatcher();
-            watcher.Path = directory;
+            watcher.Path = directory1;
             watcher.NotifyFilter = NotifyFilters.LastWrite;
             watcher.Filter = filename1;
             watcher.Changed += new FileSystemEventHandler(fileSystemWatcher_Changed);
@@ -63,7 +64,7 @@ namespace txtAppender
         private void watchDirectory2()
         {
             watcher2 = new FileSystemWatcher();
-            watcher2.Path = directory;
+            watcher2.Path = directory2;
             watcher2.NotifyFilter = NotifyFilters.LastWrite;
             watcher2.Filter = filename2;
             watcher2.Changed += new FileSystemEventHandler(fileSystemWatcher_Changed);
@@ -163,7 +164,6 @@ namespace txtAppender
          */
         public void updateLabels()
         {
-            lbl_directory.Text = directory;
             lbl_file1.Text = filename1;
             lbl_file2.Text = filename2;
             lbl_output.Text = outputPath;
@@ -184,7 +184,6 @@ namespace txtAppender
                 running = false;
                 btn_start.Text = "START";
 
-                btn_dir.Enabled = true;
                 btn_file1.Enabled = true;
                 btn_file2.Enabled = true;
                 btn_output.Enabled = true;
@@ -200,7 +199,6 @@ namespace txtAppender
                 running = true;
                 btn_start.Text = "STOP";
 
-                btn_dir.Enabled = false;
                 btn_file1.Enabled = false;
                 btn_file2.Enabled = false;
                 btn_output.Enabled = false;
@@ -211,27 +209,6 @@ namespace txtAppender
         }
 
         /*
-         * Select directory button
-         */
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-
-            using (var fbd = new FolderBrowserDialog())
-            {
-                DialogResult result = fbd.ShowDialog();
-
-                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
-                {
-                    directory = fbd.SelectedPath;
-                    Properties.Settings.Default.directory = directory;
-                    Properties.Settings.Default.Save();
-                    updateLabels();
-                }
-            }
-        }
-
-
-        /*
          * select file 1 button
          */
         private void btn_file1_Click(object sender, EventArgs e)
@@ -240,6 +217,9 @@ namespace txtAppender
             {
                 filename1 = openFileDialog1.SafeFileName;
                 file1 = openFileDialog1.FileName;
+                directory1 = Path.GetDirectoryName(file1);
+
+                Properties.Settings.Default.directory1 = directory1;
                 Properties.Settings.Default.file1 = file1;
                 Properties.Settings.Default.filename1 = filename1;
                 Properties.Settings.Default.Save();
@@ -257,6 +237,9 @@ namespace txtAppender
             {
                 filename2 = openFileDialog1.SafeFileName;
                 file2 = openFileDialog1.FileName;
+                directory2 = Path.GetDirectoryName(file2);
+
+                Properties.Settings.Default.directory2 = directory2;
                 Properties.Settings.Default.file2 = file2;
                 Properties.Settings.Default.filename2 = filename2;
                 Properties.Settings.Default.Save();
