@@ -168,7 +168,7 @@
             this.Controls.Add(this.btn_file1);
             this.Controls.Add(this.btn_start);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "File Appender";
             this.ResumeLayout(false);
             this.PerformLayout();
 
