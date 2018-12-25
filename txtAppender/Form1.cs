@@ -133,7 +133,7 @@ namespace txtAppender
                 {
                     foreach (var line in output)
                     {
-                        writer.WriteLine(line);
+                        writer.Write(line);
                     }
                     writer.Close();
                 }
