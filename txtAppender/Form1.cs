@@ -271,6 +271,7 @@ namespace txtAppender
             if (this.WindowState == FormWindowState.Minimized)
             {
                 Hide();
+                notifyIcon1.Visible = true;
             }
         }
 
@@ -282,6 +283,7 @@ namespace txtAppender
         {
             Show();
             this.WindowState = FormWindowState.Normal;
+            notifyIcon1.Visible = false;
         }
     }
 }
