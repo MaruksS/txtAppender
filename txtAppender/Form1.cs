@@ -262,6 +262,10 @@ namespace txtAppender
             }
         }
 
+
+        /*
+         * on Form minimize hide it from taskbar
+         */
         private void Form1_Resize(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Minimized)
@@ -270,6 +274,10 @@ namespace txtAppender
             }
         }
 
+
+        /*
+         * on system tray icon double click show form
+         */
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             Show();
